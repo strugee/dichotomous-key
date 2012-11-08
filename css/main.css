@@ -1,0 +1,22 @@
+/* ==========================================================================
+   Author's custom styles
+   ========================================================================== */
+   
+#container {
+	text-align: center;
+}
+
+#gameframe {
+	margin-top: 4em;
+}
+
+#gametitle {
+	font-family: 'Anaheim', sans-serif;
+	margin-bottom: 1.75em;
+}
+
+.gamemodelabel {
+	font-family: 'Anaheim', sans-serif;
+	font-size: 2em;
+	margin-bottom: 1.50em;
+}
