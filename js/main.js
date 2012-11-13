@@ -2,7 +2,7 @@
 var cplusplus = {weaklytyped: false, compiled: true, independentcmds: false, nativeexecution: true, cdialect: true};
 var java = {weaklytyped: false, compiled: true, independentcmds: false, nativeexecution: false, cdialect: false};
 var javascript = {weaklytyped: true, compiled: false, independentcmds: false, nativeexecution: false, cdialect: false};
-var python = {weaklytyped: false, compiled: false, independentcmds: false, nativeexecution: false, cdialect: false datadifffunctions: true};
+var python = {weaklytyped: false, compiled: false, independentcmds: true, nativeexecution: false, cdialect: false, datadifffunctions: true};
 var rust = {weaklytyped: false, compiled: true, independentcmds: false, nativeexecution: true, cdialect: false};
 var bash = {weaklytyped: true, compiled: false, independentcmds: true, nativeexecution: false, cdialect:false};
 var applescript = {weaklytyped: true, compiled: true, independentcmds: false, nativeexecution: false, cdialect: false};
@@ -11,7 +11,7 @@ var ruby = {weaklytyped: false, compiled: false, independentcmds: true, nativeex
 console.log("learned languages");
 
 var currentQuestion = "weaklytyped";
-var answers = {weaklytyped: null, compiled: null, independentcmds: null, nativeexecution: null, cdialect: null};
+var answers = {weaklytyped: null, compiled: null, independentcmds: null, nativeexecution: null, cdialect: null, datadifffunctions: null};
 
 var determinedLanguage = "unknown";
 var languageImage = "http://icons.iconarchive.com/icons/kyo-tux/phuzion/256/Sign-Error-icon.png";
@@ -41,32 +41,62 @@ function check() {
 		languageImage = "http://www.pgpnet.dk/images/c++-logo.png";
 	}
 
-	if (answers.weaklytyped == java.weaklytyped && answers.compiled == java.compiled && answers.independentcmds == java.independentcmds && answers.nativeexecution == java.nativeexecution && answers.cdialect == java.cdialect) {
+	if (answers.weaklytyped == java.weaklytyped &&
+	    answers.compiled == java.compiled &&
+	    answers.independentcmds == java.independentcmds &&
+	    answers.nativeexecution == java.nativeexecution &&
+	    answers.cdialect == java.cdialect) {
 		determinedLanguage = "Java";
 		languageImage = "http://gigaom2.files.wordpress.com/2011/08/java-logo.jpg";
 	}
 
-	if (answers.weaklytyped == javascript.weaklytyped && answers.compiled == javascript.compiled && answers.independentcmds == javascript.independentcmds && answers.nativeexecution == javascript.nativeexecution && answers.cdialect == javascript.cdialect) {
+	if (answers.weaklytyped == javascript.weaklytyped &&
+	    answers.compiled == javascript.compiled &&
+	    answers.independentcmds == javascript.independentcmds &&
+	    answers.nativeexecution == javascript.nativeexecution &&
+	    answers.cdialect == javascript.cdialect)
+		{
 		determinedLanguage = "JavaScript";
 		langaugeImage = "http://blueraiden.exofire.net/blog/wp-content/uploads/2011/09/javascript_logo.gif"
 	}
 
-	if (answers.weaklytyped == python.weaklytyped && answers.compiled == python.compiled && answers.independentcmds == python.independentcmds && answers.nativeexecution == python.nativeexecution && answers.cdialect == python.cdialect && answers.datadifffunction == python.datadifffunction) {
+	if (answers.weaklytyped == python.weaklytyped &&
+	    answers.compiled == python.compiled &&
+	    answers.independentcmds == python.independentcmds &&
+	    answers.nativeexecution == python.nativeexecution &&
+	    answers.cdialect == python.cdialect &&
+	    answers.datadifffunctions == python.datadifffunctions)
+	{
 		determinedLanguage = "Python";
 		languageImage = "http://www.python.org/community/logos/python-logo-master-v3-TM.png";
 	}
 
-	if (answers.weaklytyped == rust.weaklytyped && answers.compiled == rust.compiled && answers.independentcmds == rust.independentcmds && answers.nativeexecution == rust.nativeexecution && answers.cdialect == rust.cdialect) {
+	if (answers.weaklytyped == rust.weaklytyped &&
+	    answers.compiled == rust.compiled &&
+	    answers.independentcmds == rust.independentcmds &&
+	    answers.nativeexecution == rust.nativeexecution &&
+		answers.cdialect == rust.cdialect)
+	{
 		determinedLanguage = "Rust";
 		languageImage = "http://www.rust-lang.org/logos/rust-logo-128x128-blk.png";
 	}
 
-	if (answers.weaklytyped == bash.weaklytyped && answers.compiled == bash.compiled && answers.independentcmds == bash.independentcmds && answers.nativeexecution == bash.nativeexecution && answers.cdialect == bash.cdialect) {
+	if (answers.weaklytyped == bash.weaklytyped &&
+	    answers.compiled == bash.compiled &&
+	    answers.independentcmds == bash.independentcmds &&
+	    answers.nativeexecution == bash.nativeexecution &&
+	    answers.cdialect == bash.cdialect)
+	{
 		determinedLanguage = "bash";
 		languageImage = "http://blog.tuxforge.com/wp-content/uploads/2011/09/bash-logo-small.jpg";
 	}
 
-	if (answers.weaklytyped == applescript.weaklytyped && answers.compiled == applescript.compiled && answers.independentcmds == applescript.independentcmds && answers.nativeexecution == applescript.nativeexecution && answers.cdialect == applescript.cdialect) {
+	if (answers.weaklytyped == applescript.weaklytyped &&
+	    answers.compiled == applescript.compiled &&
+	    answers.independentcmds == applescript.independentcmds &&
+	    answers.nativeexecution == applescript.nativeexecution &&
+	    answers.cdialect == applescript.cdialect)
+	{
 		determinedLanguage = "AppleScript";
 		languageImage = "http://i1-news.softpedia-static.com/images/news2/How-To-Create-New-Text-File-in-Finder-2.png";
 	}
@@ -75,10 +105,10 @@ function check() {
 		answers.compiled == ruby.compiled &&
 		answers.independentcmds == ruby.independentcmds &&
 		answers.nativeexecution == ruby.nativeexecution &&
-		answers.cdialect == ruby.cdialect
-		answers.datadifffunction == ruby.datadifffunction)
+		answers.cdialect == ruby.cdialect &&
+		answers.datadifffunctions == ruby.datadifffunctions)
 	{
-		determinedLanguage = "ruby";
+		determinedLanguage = "Ruby";
 		languageImage = "http://www.ruby-lang.org/images/logo.gif";
 	}
 	
@@ -146,14 +176,14 @@ function ask(answeredYes) {
 			answers.cdialect = false;
 		}
 		document.getElementById("question").innerHTML = "Does the language differentiate between functions and data?";
-		currentQuestion = "datadifffunction";
+		currentQuestion = "datadifffunctions";
 		
-	} else if (currentQuestion == "datadifffunction") {
+	} else if (currentQuestion == "datadifffunctions") {
 		
 		if (answeredYes) {
-			answers.datadifffunction == true;
+			answers.datadifffunctions = true;
 		} else {
-			answers.datadifffunction == false;
+			answers.datadifffunctions = false;
 		}
 		
 	}
