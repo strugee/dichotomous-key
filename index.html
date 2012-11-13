@@ -27,7 +27,7 @@
 		
 		
 		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
-		<script>window.jQuery || document.write('<script src=\"js/vendor/jquery-1.8.2.min.js\"></script>')</script>
+		<script>window.jQuery || document.write('<script src="js/vendor/jquery-1.8.2.min.js"><\/script>')</script>
 
 		<script src="js/vendor/bootstrap.min.js"></script>
 
@@ -35,91 +35,38 @@
 		<!--<script src="js/main.js"></script>-->
 		<script>
 			// initialize language objects
-			/*var cplusplus;
-			var java;
-			var javascript;
-			var python;
-			var rust;
-			var bash;
-			var applescript;*/
+			var cplusplus = {weaklytyped: false, compiled: true, independentcmds: false, nativeexecution: true, cdialect: true};
+			var java = {weaklytyped: false, compiled: true, independentcmds: false, nativeexecution: false, cdialect: false};
+			var javascript = {weaklytyped: true, compiled: false, independentcmds: false, nativeexecution: false, cdialect: false};
+			var python = {weaklytyped: false, compiled: false, independentcmds: false, nativeexecution: false, cdialect: false datadifffunctions: true};
+			var rust = {weaklytyped: false, compiled: true, independentcmds: false, nativeexecution: true, cdialect: false};
+			var bash = {weaklytyped: true, compiled: false, independentcmds: true, nativeexecution: false, cdialect:false};
+			var applescript = {weaklytyped: true, compiled: true, independentcmds: false, nativeexecution: false, cdialect: false};
+			var ruby = {weaklytyped: false, compiled: false, independentcmds: true, nativeexecution: false, cdialect: false, datadifffunctions: false};
 
-			// learn c++
-			var cplusplus.weaklytyped = false;
-			var cplusplus.compiled = true;
-			var cplusplus.independentcmds = false;
-			var cplusplus.nativeexecution = true;
-			var cplusplus.cdialect = true;
-
-			// learn java
-			var java.weaklytyped = false;
-			var java.compiled = true;
-			var java.independentcmds = false;
-			var java.nativeexecution = false;
-			var java.cdialect = false;
-
-			// learn javascript
-			var javascript.weaklytyped = true;
-			var javascript.compiled = false;
-			var javascript.independentcmds = false;
-			var javascript.nativeexecution = false;
-			var javascript.cdialect = false;
-
-			// learn python
-			var python.weaklytyped = false;
-			var python.compiled = false;
-			var python.independentcmds = true;
-			var python.nativeexecution = false;
-			var python.cdialect = false;
-
-			// learn rust
-			var rust.weaklytyped = false;
-			var rust.compiled = true;
-			var rust.independentcmds = false;
-			var rust.nativeexecution = true;
-			var rust.cdialect = false;
-			
-			// learn bash
-			var bash.weaklytyped = true;
-			var bash.compiled = false;
-			var bash.independentcmds = true;
-			var bash.nativeexecution = false;
-			var bash.cdialect = false;
-
-			// learn applescript
-			var applescript.weaklytyped = true;
-			var applescript.compiled = true;
-			var applescript.independentcmds = false;
-			var applescript.nativeexecution = false;
-			var applescript.cdialect = false;
-
-			// console.log("learned languages");
+			console.log("learned languages");
 			
 			var currentQuestion = "weaklytyped";
-			var answers;
-			var answers.weaklytyped;
-			var answers.compiled;
-			var answers.independentcmds;
-			var answers.nativeexecution;
-			var answers.cdialect;
-			
+			var answers = {weaklytyped: null, compiled: null, independentcmds: null, nativeexecution: null, cdialect: null};
+
 			var determinedLanguage = "unknown";
+			var languageImage = "http://icons.iconarchive.com/icons/kyo-tux/phuzion/256/Sign-Error-icon.png";
 
 			function check() {
-			
-				document.getElementById("questions").hidden = "true";
+				console.log("check running");
 				
 				var answersText = document.getElementById("answers");
-				
+
 				// template
-				/*if (answers.weaklytyped == REPLACEMECHECK.weaklytyped &&
-				    answers.compiled == REPLACEMECHECK.compiled &&
-				    answers.independentcmds == REPLACEMECHECK.independentcmds &&
-				    answers.nativeexecution == REPLACEMECHECK.nativeexecution &&
-				    answers.cdialect == REPLACEMECHECK.cdialect)
-				{
-					determinedLanguage = "REPLACEMECHECK";
-				}*/
-				
+			/*if (answers.weaklytyped == REPLACEMECHECK.weaklytyped &&
+				answers.compiled == REPLACEMECHECK.compiled &&
+				answers.independentcmds == REPLACEMECHECK.independentcmds &&
+				answers.nativeexecution == REPLACEMECHECK.nativeexecution &&
+				answers.cdialect == REPLACEMECHECK.cdialect)
+			{
+				determinedLanguage = "REPLACEMECHECK";
+			}*/
+
 				if (answers.weaklytyped == cplusplus.weaklytyped &&
 				    answers.compiled == cplusplus.compiled &&
 				    answers.independentcmds == cplusplus.independentcmds &&
@@ -127,109 +74,143 @@
 				    answers.cdialect == cplusplus.cdialect)
 				{
 					determinedLanguage = "C++";
+					languageImage = "http://www.pgpnet.dk/images/c++-logo.png";
 				}
-				
-				if (answers.weaklytyped == java.weaklytyped &&
-				    answers.compiled == java.compiled &&
-				    answers.independentcmds == java.independentcmds &&
-				    answers.nativeexecution == java.nativeexecution &&
-				    answers.cdialect == java.cdialect)
-				{
+
+				if (answers.weaklytyped == java.weaklytyped && answers.compiled == java.compiled && answers.independentcmds == java.independentcmds && answers.nativeexecution == java.nativeexecution && answers.cdialect == java.cdialect) {
 					determinedLanguage = "Java";
+					languageImage = "http://gigaom2.files.wordpress.com/2011/08/java-logo.jpg";
 				}
-				
-				if (answers.weaklytyped == javascript.weaklytyped &&
-				    answers.compiled == javascript.compiled &&
-				    answers.independentcmds == javascript.independentcmds &&
-				    answers.nativeexecution == javascript.nativeexecution &&
-				    answers.cdialect == javascript.cdialect)
-				{
+
+				if (answers.weaklytyped == javascript.weaklytyped && answers.compiled == javascript.compiled && answers.independentcmds == javascript.independentcmds && answers.nativeexecution == javascript.nativeexecution && answers.cdialect == javascript.cdialect) {
 					determinedLanguage = "JavaScript";
+					langaugeImage = "http://blueraiden.exofire.net/blog/wp-content/uploads/2011/09/javascript_logo.gif"
 				}
-				
-				if (answers.weaklytyped == python.weaklytyped &&
-				    answers.compiled == python.compiled &&
-				    answers.independentcmds == python.independentcmds &&
-				    answers.nativeexecution == python.nativeexecution &&
-				    answers.cdialect == python.cdialect)
-				{
+
+				if (answers.weaklytyped == python.weaklytyped && answers.compiled == python.compiled && answers.independentcmds == python.independentcmds && answers.nativeexecution == python.nativeexecution && answers.cdialect == python.cdialect && answers.datadifffunction == python.datadifffunction) {
 					determinedLanguage = "Python";
+					languageImage = "http://www.python.org/community/logos/python-logo-master-v3-TM.png";
 				}
-				
-				if (answers.weaklytyped == rust.weaklytyped &&
-				    answers.compiled == rust.compiled &&
-				    answers.independentcmds == rust.independentcmds &&
-				    answers.nativeexecution == rust.nativeexecution &&
-				    answers.cdialect == rust.cdialect)
-				{
+
+				if (answers.weaklytyped == rust.weaklytyped && answers.compiled == rust.compiled && answers.independentcmds == rust.independentcmds && answers.nativeexecution == rust.nativeexecution && answers.cdialect == rust.cdialect) {
 					determinedLanguage = "Rust";
+					languageImage = "http://www.rust-lang.org/logos/rust-logo-128x128-blk.png";
 				}
-				
-				if (answers.weaklytyped == bash.weaklytyped &&
-				    answers.compiled == bash.compiled &&
-				    answers.independentcmds == bash.independentcmds &&
-				    answers.nativeexecution == bash.nativeexecution &&
-				    answers.cdialect == bash.cdialect)
-				{
+
+				if (answers.weaklytyped == bash.weaklytyped && answers.compiled == bash.compiled && answers.independentcmds == bash.independentcmds && answers.nativeexecution == bash.nativeexecution && answers.cdialect == bash.cdialect) {
 					determinedLanguage = "bash";
+					languageImage = "http://blog.tuxforge.com/wp-content/uploads/2011/09/bash-logo-small.jpg";
 				}
-				
-				if (answers.weaklytyped == applescript.weaklytyped &&
-				    answers.compiled == applescript.compiled &&
-				    answers.independentcmds == applescript.independentcmds &&
-				    answers.nativeexecution == applescript.nativeexecution &&
-				    answers.cdialect == applescript.cdialect)
-				{
+
+				if (answers.weaklytyped == applescript.weaklytyped && answers.compiled == applescript.compiled && answers.independentcmds == applescript.independentcmds && answers.nativeexecution == applescript.nativeexecution && answers.cdialect == applescript.cdialect) {
 					determinedLanguage = "AppleScript";
+					languageImage = "http://i1-news.softpedia-static.com/images/news2/How-To-Create-New-Text-File-in-Finder-2.png";
 				}
 				
-				answersText.innerHtml = "<p>Your language is " + determinedLanguage + ".</p>";
+				if (answers.weaklytyped == ruby.weaklytyped &&
+				    answers.compiled == ruby.compiled &&
+				    answers.independentcmds == ruby.independentcmds &&
+				    answers.nativeexecution == ruby.nativeexecution &&
+				    answers.cdialect == ruby.cdialect
+				    answers.datadifffunction == ruby.datadifffunction)
+				{
+					determinedLanguage = "ruby";
+					languageImage = "http://www.ruby-lang.org/images/logo.gif";
+				}
 				
-				answersText.hidden = "false";
-				
+				if (determinedLanguage != "unknown") {
+					document.getElementById("questions").hidden = "true";
+					answersText.innerHTML = "<p>Your language is " + determinedLanguage + ".</p> <br /> <img src=\"" + languageImage + "\" />";
+					answersText.removeAttribute("hidden");
+				}
+
 			}
+
+			function ask(answeredYes) {
 			
-			function ask(bool answeredYes) {
-				if (currentQuestion = "weaklytyped") {
-					if (answeredYes)  {
+				console.log("ask run");
+				
+				if (currentQuestion == "weaklytyped") {
+				
+				console.log("weakly typed if run");
+					if (answeredYes) {
+						console.log("variable set to true");
 						answers.weaklytyped = true;
 					} else {
+						console.log("variable set to false");
 						answers.weaklytyped = false;
 					}
-				} else if (currentQuestion = "compiled") {
-					if (answeredYes)  {
+					document.getElementById("question").innerHTML = "Is the language compiled?";
+					console.log("changed question");
+					currentQuestion = "compiled";
+					
+				} else if (currentQuestion == "compiled") {
+				
+					if (answeredYes) {
 						answers.compiled = true;
 					} else {
 						answers.compiled = false;
 					}
-				} else if (currentQuestion = "independentcmds") {
-					if (answeredYes)  {
+					document.getElementById("question").innerHTML = "Can you run language commands independently, for example, on an interactive console?";
+					currentQuestion = "independentcmds";
+					
+				} else if (currentQuestion == "independentcmds") {
+				
+					if (answeredYes) {
 						answers.independentcmds = true;
 					} else {
 						answers.independentcmds = false;
 					}
-				} else if (currentQuestion = "nativeexecution") {
-					if (answeredYes)  {
+					document.getElementById("question").innerHTML = "Is the language executed natively - directly on the processor - instead of, for example, a virtual machine?";
+					currentQuestion = "nativeexecution";
+					
+				} else if (currentQuestion == "nativeexecution") {
+				
+					if (answeredYes) {
 						answers.nativeexecution = true;
 					} else {
 						answers.nativeexecution = false;
 					}
-				} else if (currentQuestion = "cdialect") {
-					if (answeredYes)  {
+					document.getElementById("question").innerHTML = "Is the language a C dialect?";
+					currentQuestion = "cdialect";
+					
+				} else if (currentQuestion == "cdialect") {
+				
+					if (answeredYes) {
 						answers.cdialect = true;
 					} else {
 						answers.cdialect = false;
 					}
+					document.getElementById("question").innerHTML = "Does the language differentiate between functions and data?";
+					currentQuestion = "datadifffunction";
+					
+				} else if (currentQuestion == "datadifffunction") {
+					
+					if (answeredYes) {
+						answers.datadifffunction == true;
+					} else {
+						answers.datadifffunction == false;
+					}
+					
 				}
 				check();
 			}
-			
+
 			function transition() {
+				console.log("starting transition");
 				var startscreen = document.getElementById("startscreen");
 				var questions = document.getElementById("questions");
-				
-				startscreen.hidden="true";
-				questions.hidden="false";
+				var yesbutton = document.getElementById("yesbutton");
+				var nobutton = document.getElementById("nobutton");
+				console.log("got element objects");
+
+				startscreen.hidden = "true";
+				console.log("startscreen hidden");
+				questions.removeAttribute("hidden");
+				//yesbutton.hidden = "false";
+				//nobutton.hidden = "false";
+				console.log("questions shown");
+				console.log("ended transition");
 			}
 		</script>
 	</head>
@@ -243,14 +224,14 @@
 			<div id="startscreen">
 					<h3>Fear not! <button class="btn btn-primary btn-large" onclick="transition();">Start!</button></h3>
 			</div> <!-- /startscreen -->
-			<div id="questions" hidden="true">
+			<div id="questions" hidden>
 				<p id="question">
 					Is the language weakly typed?
 				</p> <!-- /question -->
-				<button class="btn btn-large">Yes</button>
-				<button class="btn btn-large">No</button>
+				<button id="yesbutton" class="btn btn-large" onclick="ask(true);">Yes</button>
+				<button id="nobutton" class="btn btn-large" onclick="ask(false);">No</button>
 			</div> <!-- /questions -->
-			<div id="answers" hidden="true">
+			<div id="answers" hidden>
 				Sorry, there was an internal error. Our bad.
 			</div> <!-- answers -->
 		</div> <!-- /container -->
