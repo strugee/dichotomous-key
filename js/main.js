@@ -1,17 +1,18 @@
 // initialize language objects
-var cplusplus = {weaklytyped: false, compiled: true, independentcmds: false, nativeexecution: true, cdialect: true};
-var java = {weaklytyped: false, compiled: true, independentcmds: false, nativeexecution: false, cdialect: false};
-var javascript = {weaklytyped: true, compiled: false, independentcmds: false, nativeexecution: false, cdialect: false};
-var python = {weaklytyped: false, compiled: false, independentcmds: true, nativeexecution: false, cdialect: false, datadifffunctions: true};
-var rust = {weaklytyped: false, compiled: true, independentcmds: false, nativeexecution: true, cdialect: false};
-var bash = {weaklytyped: true, compiled: false, independentcmds: true, nativeexecution: false, cdialect:false};
-var applescript = {weaklytyped: true, compiled: true, independentcmds: false, nativeexecution: false, cdialect: false};
-var ruby = {weaklytyped: false, compiled: false, independentcmds: true, nativeexecution: false, cdialect: false, datadifffunctions: false};
+var cplusplus = {weaklytyped: false, compiled: true, independentcmds: false, nativeexecution: true, cdialect: true, ecmascriptdescendant: false};
+var java = {weaklytyped: false, compiled: true, independentcmds: false, nativeexecution: false, cdialect: false, ecmascriptdescendant: false};
+var javascript = {weaklytyped: true, compiled: false, independentcmds: false, nativeexecution: false, cdialect: false, ecmascriptdescendant: true};
+var python = {weaklytyped: false, compiled: false, independentcmds: true, nativeexecution: false, cdialect: false, ecmascriptdescendant: false, datadifffunctions: true};
+var rust = {weaklytyped: false, compiled: true, independentcmds: false, nativeexecution: true, cdialect: false, ecmascriptdescendant: false};
+var bash = {weaklytyped: true, compiled: false, independentcmds: true, nativeexecution: false, cdialect:false, ecmascriptdescendant: false};
+var applescript = {weaklytyped: true, compiled: true, independentcmds: false, nativeexecution: false, cdialect: false, ecmascriptdescendant: false};
+var ruby = {weaklytyped: false, compiled: false, independentcmds: true, nativeexecution: false, cdialect: false, datadifffunctions: false, ecmascriptdescendant: false};
+var actionscript3 = {weaklytyped: false, compiled: true, independentcmds: false, nativeexecution: false, cdialect: false, ecmascriptdescendant: true, datadifffunctions: false};
 
 console.log("learned languages");
 
 var currentQuestion = "weaklytyped";
-var answers = {weaklytyped: null, compiled: null, independentcmds: null, nativeexecution: null, cdialect: null, datadifffunctions: null};
+var answers = {weaklytyped: null, compiled: null, independentcmds: null, nativeexecution: null, cdialect: null, ecmascriptdescendant: null, datadifffunctions: null};
 
 var determinedLanguage = "unknown";
 var languageImage = "http://icons.iconarchive.com/icons/kyo-tux/phuzion/256/Sign-Error-icon.png";
@@ -45,7 +46,9 @@ function check() {
 	    answers.compiled == java.compiled &&
 	    answers.independentcmds == java.independentcmds &&
 	    answers.nativeexecution == java.nativeexecution &&
-	    answers.cdialect == java.cdialect) {
+	    answers.cdialect == java.cdialect &&
+	    answers.ecmascriptdescendant == java.ecmascriptdescendant)
+	{
 		determinedLanguage = "Java";
 		languageImage = "http://gigaom2.files.wordpress.com/2011/08/java-logo.jpg";
 	}
@@ -54,10 +57,11 @@ function check() {
 	    answers.compiled == javascript.compiled &&
 	    answers.independentcmds == javascript.independentcmds &&
 	    answers.nativeexecution == javascript.nativeexecution &&
-	    answers.cdialect == javascript.cdialect)
-		{
+	    answers.cdialect == javascript.cdialect &&
+		answers.ecmascriptdescendant == javascript.ecmascriptdescendant)
+	{
 		determinedLanguage = "JavaScript";
-		langaugeImage = "http://blueraiden.exofire.net/blog/wp-content/uploads/2011/09/javascript_logo.gif"
+		languageImage = "http://blueraiden.exofire.net/blog/wp-content/uploads/2011/09/javascript_logo.gif";
 	}
 
 	if (answers.weaklytyped == python.weaklytyped &&
@@ -110,6 +114,17 @@ function check() {
 	{
 		determinedLanguage = "Ruby";
 		languageImage = "http://www.ruby-lang.org/images/logo.gif";
+	}
+	
+	if (answers.weaklytyped == actionscript3.weaklytyped &&
+	    answers.compiled == actionscript3.compiled &&
+	    answers.independentcmds == actionscript3.independentcmds &&
+	    answers.nativeexecution == actionscript3.nativeexecution &&
+	    answers.cdialect == actionscript3.cdialect &&
+		answers.ecmascriptdescendant == actionscript3.ecmascriptdescendant)
+	{
+		determinedLanguage = "ActionScript 3";
+		languageImage = "http://polygeek.com/images/family_of_skills/ActionscriptIcon_400.png";
 	}
 	
 	if (determinedLanguage != "unknown") {
@@ -174,6 +189,16 @@ function ask(answeredYes) {
 			answers.cdialect = true;
 		} else {
 			answers.cdialect = false;
+		}
+		document.getElementById("question").innerHTML = "Is the language a descendant of the ECMAScript standard?";
+		currentQuestion = "ecmascriptdescendant";
+		
+	} else if (currentQuestion == "ecmascriptdescendant") {
+	
+		if (answeredYes)  {
+			answers.ecmascriptdescendant = true;
+		} else {
+			answers.ecmascriptdescendant = false;
 		}
 		document.getElementById("question").innerHTML = "Does the language differentiate between functions and data?";
 		currentQuestion = "datadifffunctions";
